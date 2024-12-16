@@ -1,9 +1,9 @@
+import axios from "axios";
 import { FileIcon, UploadCloudIcon, XIcon } from "lucide-react";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 import { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
-import axios from "axios";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import { Skeleton } from "../ui/skeleton";
 
 function ProductImageUpload({
@@ -50,7 +50,7 @@ function ProductImageUpload({
     const data = new FormData();
     data.append("my_file", imageFile);
     const response = await axios.post(
-      "http://localhost:5000/api/admin/products/upload-image",
+      "https://simple-ecommerce-server.onrender.com/api/admin/products/upload-image",
       data
     );
     console.log(response, "response");
