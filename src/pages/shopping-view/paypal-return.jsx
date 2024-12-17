@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 function PaypalReturnPage() {
+  console.log("welcome to PaypalReturnPage");
   const dispatch = useDispatch();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
