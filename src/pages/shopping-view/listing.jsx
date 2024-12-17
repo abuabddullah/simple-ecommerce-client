@@ -153,7 +153,7 @@ function ShoppingListing() {
           <h2 className="text-lg font-extrabold">All Products</h2>
           <div className="flex items-center gap-3">
             <span className="text-muted-foreground">
-              {productList??.length} Products
+              {productList?.length} Products
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
