@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import AdminLayout from "./components/admin-view/layout";
 import AuthLayout from "./components/auth/layout";
 import CheckAuth from "./components/common/check-auth";
+import ShoppingHeader from "./components/shopping-view/header";
 import ShoppingLayout from "./components/shopping-view/layout";
 import AdminDashboard from "./pages/admin-view/dashboard";
 import AdminFeatures from "./pages/admin-view/features";
@@ -40,7 +41,7 @@ function App() {
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={
             <CheckAuth
@@ -48,7 +49,9 @@ function App() {
               user={user}
             ></CheckAuth>
           }
-        />
+        /> */}
+        
+        <Route path="/" element={<><ShoppingHeader/><ShoppingHome /></>} />
         <Route
           path="/auth"
           element={

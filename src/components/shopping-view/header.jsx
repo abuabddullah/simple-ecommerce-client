@@ -26,7 +26,6 @@ import { Label } from "../ui/label";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import UserCartWrapper from "./cart-wrapper";
 
-
 function MenuItems() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -93,7 +92,7 @@ function HeaderRightContent() {
           size="icon"
           className="relative"
         >
-          <BsCartCheckFill  className="w-6 h-6" />
+          <BsCartCheckFill className="w-6 h-6" />
           <span className="absolute top-[-5px] right-[2px] font-bold text-sm">
             {cartItems?.items?.length || 0}
           </span>
@@ -135,7 +134,6 @@ function HeaderRightContent() {
   );
 }
 
-
 function ShoppingHeader() {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
@@ -143,7 +141,7 @@ function ShoppingHeader() {
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <RiShoppingBag3Fill  className="h-6 w-6" />
+          <RiShoppingBag3Fill className="h-6 w-6" />
           <span className="font-bold pacifico">E-Commerce</span>
         </Link>
         <Sheet>
@@ -162,9 +160,11 @@ function ShoppingHeader() {
           <MenuItems />
         </div>
 
-        <div className="hidden lg:block">
-          <HeaderRightContent />
-        </div>
+        {isAuthenticated && (
+          <div className="hidden lg:block">
+            <HeaderRightContent />
+          </div>
+        )}
       </div>
     </header>
   );
