@@ -1,7 +1,7 @@
-import { Minus, Plus, Trash } from "lucide-react";
-import { Button } from "../ui/button";
-import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, updateCartQuantity } from "@/store/shop/cart-slice";
+import { Minus, Plus, Trash } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 
 function UserCartItemsContent({ cartItem }) {
@@ -15,7 +15,7 @@ function UserCartItemsContent({ cartItem }) {
     if (typeOfAction == "plus") {
       let getCartItems = cartItems.items || [];
 
-      if (getCartItems.length) {
+      if (getCartItems?.length) {
         const indexOfCurrentCartItem = getCartItems.findIndex(
           (item) => item.productId === getCartItem?.productId
         );

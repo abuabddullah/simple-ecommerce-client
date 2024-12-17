@@ -7,7 +7,7 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
   const navigate = useNavigate();
 
   const totalCartAmount =
-    cartItems && cartItems.length > 0
+    cartItems && cartItems?.length > 0
       ? cartItems.reduce(
           (sum, currentItem) =>
             sum +
@@ -25,7 +25,7 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
         <SheetTitle>Your Cart</SheetTitle>
       </SheetHeader>
       <div className="mt-8 space-y-4">
-        {cartItems && cartItems.length > 0
+        {cartItems && cartItems?.length > 0
           ? cartItems.map((item) => <UserCartItemsContent cartItem={item} />)
           : null}
       </div>

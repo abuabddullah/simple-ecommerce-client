@@ -1,16 +1,16 @@
+import { addressFormControls } from "@/config";
+import {
+    addNewAddress,
+    deleteAddress,
+    editaAddress,
+    fetchAllAddresses,
+} from "@/store/shop/address-slice";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CommonForm from "../common/form";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { addressFormControls } from "@/config";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addNewAddress,
-  deleteAddress,
-  editaAddress,
-  fetchAllAddresses,
-} from "@/store/shop/address-slice";
-import AddressCard from "./address-card";
 import { useToast } from "../ui/use-toast";
+import AddressCard from "./address-card";
 
 const initialAddressFormData = {
   address: "",
@@ -31,7 +31,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
   function handleManageAddress(event) {
     event.preventDefault();
 
-    if (addressList.length >= 3 && currentEditedId === null) {
+    if (addressList?.length >= 3 && currentEditedId === null) {
       setFormData(initialAddressFormData);
       toast({
         title: "You can add max 3 addresses",
@@ -114,7 +114,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
   return (
     <Card>
       <div className="mb-5 p-3 grid grid-cols-1 sm:grid-cols-2  gap-2">
-        {addressList && addressList.length > 0
+        {addressList && addressList?.length > 0
           ? addressList.map((singleAddressItem) => (
               <AddressCard
                 selectedId={selectedId}

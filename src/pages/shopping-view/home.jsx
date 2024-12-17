@@ -6,12 +6,12 @@ import { useToast } from "@/components/ui/use-toast";
 import { getFeatureImages } from "@/store/common-slice";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import {
-  fetchAllFilteredProducts,
-  fetchProductDetails,
+    fetchAllFilteredProducts,
+    fetchProductDetails,
 } from "@/store/shop/products-slice";
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon
+    ChevronLeftIcon,
+    ChevronRightIcon
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CgAdidas } from "react-icons/cg";
@@ -94,7 +94,7 @@ function ShoppingHome() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % featureImageList.length);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % featureImageList?.length);
     }, 15000);
 
     return () => clearInterval(timer);
@@ -118,7 +118,7 @@ function ShoppingHome() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="relative w-full h-[600px] overflow-hidden">
-        {featureImageList && featureImageList.length > 0
+        {featureImageList && featureImageList?.length > 0
           ? featureImageList.map((slide, index) => (
               <img
                 src={slide?.image}
@@ -135,8 +135,8 @@ function ShoppingHome() {
           onClick={() =>
             setCurrentSlide(
               (prevSlide) =>
-                (prevSlide - 1 + featureImageList.length) %
-                featureImageList.length
+                (prevSlide - 1 + featureImageList?.length) %
+                featureImageList?.length
             )
           }
           className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
@@ -148,7 +148,7 @@ function ShoppingHome() {
           size="icon"
           onClick={() =>
             setCurrentSlide(
-              (prevSlide) => (prevSlide + 1) % featureImageList.length
+              (prevSlide) => (prevSlide + 1) % featureImageList?.length
             )
           }
           className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80"
@@ -206,7 +206,7 @@ function ShoppingHome() {
             Feature Products
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {productList && productList.length > 0
+            {productList && productList?.length > 0
               ? productList.map((productItem, index) => (
                   <ShoppingProductTile
                     key={index}

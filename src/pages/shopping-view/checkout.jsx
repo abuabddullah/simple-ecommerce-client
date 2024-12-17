@@ -19,7 +19,7 @@ function ShoppingCheckout() {
   console.log(currentSelectedAddress, "cartItems");
 
   const totalCartAmount =
-    cartItems && cartItems.items && cartItems.items.length > 0
+    cartItems && cartItems.items && cartItems.items?.length > 0
       ? cartItems.items.reduce(
           (sum, currentItem) =>
             sum +
@@ -32,7 +32,7 @@ function ShoppingCheckout() {
       : 0;
 
   function handleInitiatePaypalPayment() {
-    if (cartItems.length === 0) {
+    if (cartItems?.length === 0) {
       toast({
         title: "Your cart is empty. Please add items to proceed",
         variant: "destructive",
@@ -105,7 +105,7 @@ function ShoppingCheckout() {
           setCurrentSelectedAddress={setCurrentSelectedAddress}
         />
         <div className="flex flex-col gap-4">
-          {cartItems && cartItems.items && cartItems.items.length > 0
+          {cartItems && cartItems.items && cartItems.items?.length > 0
             ? cartItems.items.map((item) => (
                 <UserCartItemsContent cartItem={item} />
               ))

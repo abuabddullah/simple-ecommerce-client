@@ -1,7 +1,7 @@
 import { filterOptions } from "@/config";
 import { Fragment } from "react";
-import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
+import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 
 function ProductFilter({ filters, handleFilter }) {
@@ -21,7 +21,7 @@ function ProductFilter({ filters, handleFilter }) {
                     <Checkbox
                       checked={
                         filters &&
-                        Object.keys(filters).length > 0 &&
+                        Object.keys(filters)?.length > 0 &&
                         filters[keyItem] &&
                         filters[keyItem].indexOf(option.id) > -1
                       }

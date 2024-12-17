@@ -25,7 +25,7 @@ function createSearchParamsHelper(filterParams) {
   const queryParams = [];
 
   for (const [key, value] of Object.entries(filterParams)) {
-    if (Array.isArray(value) && value.length > 0) {
+    if (Array.isArray(value) && value?.length > 0) {
       const paramValue = value.join(",");
 
       queryParams.push(`${key}=${encodeURIComponent(paramValue)}`);
@@ -87,7 +87,7 @@ function ShoppingListing() {
     console.log(cartItems);
     let getCartItems = cartItems.items || [];
 
-    if (getCartItems.length) {
+    if (getCartItems?.length) {
       const indexOfCurrentItem = getCartItems.findIndex(
         (item) => item.productId === getCurrentProductId
       );
@@ -126,7 +126,7 @@ function ShoppingListing() {
   }, [categorySearchParam]);
 
   useEffect(() => {
-    if (filters && Object.keys(filters).length > 0) {
+    if (filters && Object.keys(filters)?.length > 0) {
       const createQueryString = createSearchParamsHelper(filters);
       setSearchParams(new URLSearchParams(createQueryString));
     }
@@ -153,7 +153,7 @@ function ShoppingListing() {
           <h2 className="text-lg font-extrabold">All Products</h2>
           <div className="flex items-center gap-3">
             <span className="text-muted-foreground">
-              {productList?.length} Products
+              {productList??.length} Products
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -182,7 +182,7 @@ function ShoppingListing() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-          {productList && productList.length > 0
+          {productList && productList?.length > 0
             ? productList.map((productItem, index) => (
                 <ShoppingProductTile
                   key={index}

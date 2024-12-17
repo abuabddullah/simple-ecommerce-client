@@ -1,17 +1,16 @@
-import { StarIcon } from "lucide-react";
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { setProductDetails } from "@/store/shop/products-slice";
+import { addReview, getReviews } from "@/store/shop/review-slice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import StarRatingComponent from "../common/star-rating";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent } from "../ui/dialog";
-import { Separator } from "../ui/separator";
 import { Input } from "../ui/input";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
-import { useToast } from "../ui/use-toast";
-import { setProductDetails } from "@/store/shop/products-slice";
 import { Label } from "../ui/label";
-import StarRatingComponent from "../common/star-rating";
-import { useEffect, useState } from "react";
-import { addReview, getReviews } from "@/store/shop/review-slice";
+import { Separator } from "../ui/separator";
+import { useToast } from "../ui/use-toast";
 
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const [reviewMsg, setReviewMsg] = useState("");
@@ -32,7 +31,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   function handleAddToCart(getCurrentProductId, getTotalStock) {
     let getCartItems = cartItems.items || [];
 
-    if (getCartItems.length) {
+    if (getCartItems?.length) {
       const indexOfCurrentItem = getCartItems.findIndex(
         (item) => item.productId === getCurrentProductId
       );
@@ -99,9 +98,9 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   console.log(reviews, "reviews");
 
   const averageReview =
-    reviews && reviews.length > 0
+    reviews && reviews?.length > 0
       ? reviews.reduce((sum, reviewItem) => sum + reviewItem.reviewValue, 0) /
-        reviews.length
+        reviews?.length
       : 0;
 
   return (
@@ -168,7 +167,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
           <div className="max-h-[300px] overflow-auto">
             <h2 className="text-xl font-bold mb-4">Reviews</h2>
             <div className="grid gap-6">
-              {reviews && reviews.length > 0 ? (
+              {reviews && reviews?.length > 0 ? (
                 reviews.map((reviewItem, index) => (
                   <div 
                   key={index}

@@ -1,23 +1,23 @@
+import {
+    getAllOrdersByUserId,
+    getOrderDetails,
+    resetOrderDetails,
+} from "@/store/shop/order-slice";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Dialog } from "../ui/dialog";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "../ui/table";
 import ShoppingOrderDetailsView from "./order-details";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllOrdersByUserId,
-  getOrderDetails,
-  resetOrderDetails,
-} from "@/store/shop/order-slice";
-import { Badge } from "../ui/badge";
 
 function ShoppingOrders() {
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
@@ -58,7 +58,7 @@ function ShoppingOrders() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orderList && orderList.length > 0
+            {orderList && orderList?.length > 0
               ? orderList.map((orderItem) => (
                   <TableRow>
                     <TableCell>{orderItem?._id}</TableCell>

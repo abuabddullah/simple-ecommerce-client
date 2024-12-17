@@ -5,8 +5,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { fetchProductDetails } from "@/store/shop/products-slice";
 import {
-  getSearchResults,
-  resetSearchResults,
+    getSearchResults,
+    resetSearchResults,
 } from "@/store/shop/search-slice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,7 +25,7 @@ function SearchProducts() {
   const { cartItems } = useSelector((state) => state.shopCart);
   const { toast } = useToast();
   useEffect(() => {
-    if (keyword && keyword.trim() !== "" && keyword.trim().length > 3) {
+    if (keyword && keyword.trim() !== "" && keyword.trim()?.length > 3) {
       setTimeout(() => {
         setSearchParams(new URLSearchParams(`?keyword=${keyword}`));
         dispatch(getSearchResults(keyword));
@@ -40,7 +40,7 @@ function SearchProducts() {
     console.log(cartItems);
     let getCartItems = cartItems.items || [];
 
-    if (getCartItems.length) {
+    if (getCartItems?.length) {
       const indexOfCurrentItem = getCartItems.findIndex(
         (item) => item.productId === getCurrentProductId
       );
@@ -97,7 +97,7 @@ function SearchProducts() {
           />
         </div>
       </div>
-      {!searchResults.length ? (
+      {!searchResults?.length ? (
         <h1 className="text-5xl font-extrabold">No result found!</h1>
       ) : null}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
